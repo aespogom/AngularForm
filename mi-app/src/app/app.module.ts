@@ -8,6 +8,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { AgendaComponent } from './components/agenda/agenda.component';
 
+// Angular material
+import { AngularMaterialModule } from "./modules/angular-material/angular-material.module";
+
+// Angular
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +24,10 @@ import { AgendaComponent } from './components/agenda/agenda.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularMaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

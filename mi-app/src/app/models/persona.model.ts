@@ -15,8 +15,22 @@ export class Persona {
     color_favorito: string;
     sexo: string;
 
-    constructor(){
+    constructor(sexo: string, name: string, apellidos: Array<string>, cumple: Date,
+                dni: string, color: string){
 
+        this.sexo = sexo;
+        this.nombre = name;
+        this.apellidos = [];
+        for (let i: number = 0; i < apellidos.length -1 ; i++ ) {
+            this.apellidos[i] = apellidos[i];
+        }
+        this.cumpleaños = cumple;
+        this.edad = new Date().getFullYear() - this.cumpleaños.getFullYear();
+        this.dni = dni;
+        this.color_favorito = color;
+    }
+
+    getRandomPersona(): void {
         this.sexo = UtilitiesService.getRandomGender();
         this.nombre = NAMES[this.sexo][UtilitiesService.getRandomNumber(95)];
         this.apellidos = [];

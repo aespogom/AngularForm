@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 // import * as readline from 'readline';
 // import { stdin as input, stdout as output } from 'node:process';
 // import { Persona } from '../models/persona.model';
 import { TIPOS } from '../constants/tipos';
+import { Persona } from '../models/persona.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilitiesService {
 
-  constructor() { }
+    private _personas: Array<Persona> = [];
+  
+    constructor() { }
     
   /**
    * Función que devuelve una cadena de caracteres de longitud "length"
@@ -67,6 +71,14 @@ export class UtilitiesService {
       let index: number = Math.floor(Math.random() * (max ));
       return TIPOS[key][index]
   }
+ 
+    addPersonas(p: Persona) {
+        this._personas.push(p);
+    }
+
+    getPersonas(): Array<Persona> {
+        return this._personas;
+    }
 
   // /**
   //  * Función que modifica la dirección, telefono e email de una persona basado en su DNI
