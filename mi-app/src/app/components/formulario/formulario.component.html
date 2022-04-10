@@ -2,32 +2,54 @@
   <h2 class="text-center mb-5"> Añade un contacto </h2>
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <form [formGroup]="formulario" (ngSubmit)="addPersona(formulario.value)">
-        <div class="form-group">
-          <label for="name">Nombre</label>
-          <input type="text" class="form-control" name="name" formControlName="name">
+      <form [formGroup]="formulario" (ngSubmit)="addPersona()">
+        <div class="form-container">
+          <mat-form-field appearance="fill">
+            <mat-label for="name">Nombre</mat-label>
+            <input matInput type="text" class="form-control" name="name"  required
+              [errorStateMatcher]="matcher" formControlName="name">
+            <mat-icon matSuffix>person_outline</mat-icon>
+            <mat-error *ngIf="name.invalid">{{getErrorMessage('name')}}</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label for="apellidos">Apellidos</mat-label>
+            <input matInput type="text" class="form-control" name="apellidos"  required
+              [errorStateMatcher]="matcher" formControlName="apellidos">
+            <mat-icon matSuffix>groups</mat-icon>
+            <mat-error *ngIf="apellidos.invalid">{{getErrorMessage('apellidos')}}</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label for="dni">DNI</mat-label>
+            <input matInput type="text" class="form-control" name="dni" placeholder="8 números y 1 letra"  required
+              [errorStateMatcher]="matcher" formControlName="dni" maxlength="9">
+            <mat-icon matSuffix>badge</mat-icon>
+            <mat-error *ngIf="dni.invalid">{{getErrorMessage('dni')}}</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label for="cumple">Cumpleaños</mat-label>
+            <input matInput type="date" class="form-control" name="cumple"  required
+              [errorStateMatcher]="matcher" formControlName="cumple" [min]="minDate" [max]="maxDate">
+            <mat-icon matSuffix>event</mat-icon>
+            <mat-error *ngIf="cumple.invalid">{{getErrorMessage('dni')}}</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label for="sexo">Sexo</mat-label>
+            <input matInput type="text" class="form-control" name="sexo"  required
+              [errorStateMatcher]="matcher" formControlName="sexo">
+            <mat-icon matSuffix>face</mat-icon>
+            <mat-error *ngIf="sexo.invalid">{{getErrorMessage('sexo')}}</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label for="color">Color favorito</mat-label>
+            <input matInput type="color" class="form-control" name="color"  required formControlName="colorFav">
+            <mat-icon matSuffix>palette</mat-icon>
+            <mat-error *ngIf="color.invalid">{{getErrorMessage('color')}}</mat-error>
+          </mat-form-field>
         </div>
-        <div class="form-group">
-          <label for="apellidos">Apellidos</label>
-          <input type="text" class="form-control" name="apellidos" formControlName="apellidos">
-        </div>
-        <div class="form-group">
-          <label for="dni">DNI</label>
-          <input type="text" class="form-control" name="dni" placeholder="8 números y 1 letra" formControlName="dni">
-        </div>
-        <div class="form-group">
-          <label for="cumple">Cumpleaños</label>
-          <input type="text" class="form-control" name="cumple" formControlName="cumple">
-        </div>
-        <div class="form-group">
-          <label for="sexo">Sexo</label>
-          <input type="text" class="form-control" name="sexo" formControlName="sexo">
-        </div>
-        <div class="form-group">
-          <label for="color">Color favorito</label>
-          <input type="text" class="form-control" name="color" formControlName="color">
-        </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!formulario.valid">Submit</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!formulario.valid">
+          Añadir
+          <mat-icon matSuffix>person_add</mat-icon>
+        </button>
       </form>
     </div>
   </div>

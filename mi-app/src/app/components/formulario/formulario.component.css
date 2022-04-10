@@ -1,0 +1,15 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container > * {
+    width: 100%;
+}
+
+/* mat-form-field.mat-form-field {
+    font-size: 16px;
+    color: rgb(2, 2, 10);
+    background-color: rgb(194, 215, 233);
+    border: solid 1px #c0e3ff;
+} */

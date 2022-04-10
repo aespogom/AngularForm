@@ -21,7 +21,7 @@ export class Persona {
         this.sexo = sexo;
         this.nombre = name;
         this.apellidos = [];
-        for (let i: number = 0; i < apellidos.length -1 ; i++ ) {
+        for (let i: number = 0; i < apellidos.length; i++ ) {
             this.apellidos[i] = apellidos[i];
         }
         this.cumpleaños = cumple;
