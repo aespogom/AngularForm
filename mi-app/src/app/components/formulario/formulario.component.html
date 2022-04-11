@@ -34,14 +34,19 @@
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label for="sexo">Sexo</mat-label>
-            <input matInput type="text" class="form-control" name="sexo"  required
-              [errorStateMatcher]="matcher" formControlName="sexo">
+            <mat-select  class="form-control" name="sexo"  required
+            [errorStateMatcher]="matcher" formControlName="sexo">
+              <mat-option value="femenino">Femenino</mat-option>
+              <mat-option value="masculino">Masculino</mat-option>
+              <mat-option value="otro">Sin especificar</mat-option>
+            </mat-select>
             <mat-icon matSuffix>face</mat-icon>
             <mat-error *ngIf="sexo.invalid">{{getErrorMessage('sexo')}}</mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label for="color">Color favorito</mat-label>
-            <input matInput type="color" class="form-control" name="color"  required formControlName="colorFav">
+            <input matInput type="text" class="form-control" name="color"  required
+              [errorStateMatcher]="matcher" formControlName="color">
             <mat-icon matSuffix>palette</mat-icon>
             <mat-error *ngIf="color.invalid">{{getErrorMessage('color')}}</mat-error>
           </mat-form-field>

@@ -1,0 +1,28 @@
+.demo-table {
+    width: 100%;
+}
+
+.mat-column-position, .mat-column-name, .mat-column-dni, .mat-column-accion {
+    width: 32px;
+    border: 1px 0px solid currentColor;
+    padding: 24px;
+    text-align: center;
+}
+
+.emptyTable {
+    justify-content: center;
+    padding: 18%;
+    background-color: #97c4f066;
+}
+
+.cardContainer{
+    min-height: 70vh;
+}
+
+.footer {
+    position: fixed;
+    right: 10vh;
+    bottom: 0vh;
+    width: 100%;
+    text-align: center;
+}
