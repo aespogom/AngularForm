@@ -1,7 +1,8 @@
 import { invalid } from '@angular/compiler/src/render3/view/util';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Form, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Persona } from 'src/app/models/persona.model';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 
@@ -21,6 +22,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class FormularioComponent implements OnInit {
 
+  @Input('fillPersona') fillPersona: Persona | undefined;
+
   formulario: FormGroup = new FormGroup({});
   matcher = new MyErrorStateMatcher();
 
@@ -34,7 +37,8 @@ export class FormularioComponent implements OnInit {
   maxDate: Date = new Date();
   minDate: Date = new Date();
 
-  constructor(private utilities: UtilitiesService) { 
+  constructor(private utilities: UtilitiesService,
+              public dialog: MatDialog) { 
     
     let year = this.minDate.getFullYear() - 125;
     this.minDate = new Date(year, 1, 1);
@@ -51,15 +55,36 @@ export class FormularioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    if (this.fillPersona) {
+      this.name.setValue(this.fillPersona.nombre);
+      this.dni.setValue(this.fillPersona.dni);
+      this.dni.disable();
+      this.apellidos.setValue(this.fillPersona.apellidos.toString());
+      this.color.setValue(this.fillPersona.color_favorito);
+      this.sexo.setValue(this.fillPersona.sexo);
+      this.cumple.setValue(this.fillPersona.cumpleaños);
+
+    }
   }
 
   addPersona(): void {
     let apellidosArray: Array<string> = this.apellidos.value.split(' ');
-    let cumpleaños: Date = new Date(this.cumple.value)
+    let cumpleaños: Date = new Date(this.cumple.value);
     let persona: Persona = new Persona(this.sexo.value, this.name.value, apellidosArray, cumpleaños, this.dni.value, this.color.value )
-    this.utilities.addPersonas(persona);
-    this.createNewForm();
+    
+    const found_P: Persona | undefined = this.utilities.getPersonas().find((p: Persona) => 
+      p.dni ==this.dni.value
+    );
+    if (found_P) {
+      let index_found: number = this.utilities.getPersonas().indexOf(found_P);
+      this.utilities.editPersona(index_found, persona);
+      this.dialog.closeAll();
+    } else {
+      this.utilities.addPersonas(persona);
+      this.createNewForm();
+    }
+    
+    
     
   }
 

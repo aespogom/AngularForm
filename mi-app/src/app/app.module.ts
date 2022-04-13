@@ -13,13 +13,15 @@ import { AngularMaterialModule } from "./modules/angular-material/angular-materi
 
 // Angular
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ModalComponent } from './shared/modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonasComponent,
     FormularioComponent,
-    AgendaComponent
+    AgendaComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalComponent]
 })
 export class AppModule { }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Persona } from 'src/app/models/persona.model';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { ModalComponent } from 'src/app/shared/modal/modal.component';
 
 @Component({
   selector: 'app-agenda',
@@ -8,11 +10,11 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
   styleUrls: ['./agenda.component.css']
 })
 export class AgendaComponent implements OnInit {
-
   personas: Array<Persona> = [];
   displayedColumns: Array<string> = [];
 
-  constructor( private utilities: UtilitiesService) { }
+  constructor(private utilities: UtilitiesService,
+              public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.personas = this.utilities.getPersonas()
@@ -26,13 +28,21 @@ export class AgendaComponent implements OnInit {
 
   editPersona(p: Persona): void {
     // TODO
-    console.log(p)
+    console.log(p);
+    const modal_edit = this.dialog.open(ModalComponent, {width: '70%', data: p})
+    modal_edit.afterClosed().subscribe(res => {
+      this.refreshTable();
+    });
   }
 
   removePersona(p: Persona): void {
-    // TODO
     let indexToRemove: number = this.getIndex(p);
-    this.personas = this.personas.splice(indexToRemove,1);
+    this.utilities.removePersonas(indexToRemove);
+    this.refreshTable();
+  }
+
+  refreshTable(): void {
+    this.personas = [...this.utilities.getPersonas()];
   }
 
   

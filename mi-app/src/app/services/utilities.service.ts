@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { COLORES } from '../constants/colores';
+import { NAMES } from '../constants/names';
 // import * as readline from 'readline';
 // import { stdin as input, stdout as output } from 'node:process';
 // import { Persona } from '../models/persona.model';
@@ -72,12 +74,36 @@ export class UtilitiesService {
       return TIPOS[key][index]
   }
  
-    addPersonas(p: Persona) {
+    addPersonas(p: Persona): void {
         this._personas.push(p);
     }
 
     getPersonas(): Array<Persona> {
         return this._personas;
+    }
+
+    editPersona(index: number, p: Persona): void {
+        this.removePersonas(index);
+        this.addPersonas(p);
+    }
+
+    removePersonas(index_remove: number): void {
+        this._personas.splice(index_remove,1);
+    }
+
+    static getRandomPersona(): Persona {
+        let sexo = UtilitiesService.getRandomGender();
+        let nombre = NAMES[sexo][UtilitiesService.getRandomNumber(95)];
+        let apellidos = [];
+        for (let i: number = 0; i < 2; i++ ) {
+            apellidos[i] = NAMES['apellidos'][UtilitiesService.getRandomNumber(97)];
+        }
+        let cumpleaños = UtilitiesService.getRandomFecha();
+        let edad = new Date().getFullYear() - cumpleaños.getFullYear();
+        let dni = UtilitiesService.getRandomNumber(99999999,10000000).toString() + UtilitiesService.getRandomString(1);
+        let color_favorito = COLORES[UtilitiesService.getRandomNumber(36)];
+        let personaOutput: Persona = new Persona(sexo,nombre,apellidos,cumpleaños,dni,color_favorito);
+        return personaOutput
     }
 
   // /**
