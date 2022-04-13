@@ -1,10 +1,4 @@
 // ANA ESPONERA GOMEZ PRACTICA TYPESCRIPT 2022
-
-import { NAMES } from "../constants/names";
-import { COLORES } from "../constants/colores";
-import { UtilitiesService } from "../services/utilities.service";
-
-
 export class Persona {
     
     nombre: string;

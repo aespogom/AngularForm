@@ -24,7 +24,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
+// TODO quitar lo que no use
 @NgModule({
   declarations: [],
   imports: [

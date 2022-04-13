@@ -25,8 +25,6 @@ export class FormularioComponent implements OnInit {
   @Input('fillPersona') fillPersona: Persona | undefined;
 
   formulario: FormGroup = new FormGroup({});
-  matcher = new MyErrorStateMatcher();
-
   name: FormControl;
   apellidos: FormControl;
   dni: FormControl;
@@ -82,45 +80,7 @@ export class FormularioComponent implements OnInit {
     } else {
       this.utilities.addPersonas(persona);
       this.createNewForm();
-    }
-    
-    
-    
-  }
-
-  
-
-  getErrorMessage(name: string): any {
-    // if (name == 'name') {
-    //     return this.name.hasError('required') ? 'Debe introducir un valor' :
-    //       this.name.hasError('name') ? 'No es válido' :
-    //           '';
-    // } else if (name=='apellidos') {
-    //     return this.apellidos.hasError('required') ? 'Debe introducir un valor' :
-    //       this.apellidos.hasError('name') ? 'No es válido' :
-    //           '';
-
-    // } else if (name=='dni') {
-    //   return this.dni.hasError('required') ? 'Debe introducir un valor' :
-    //     this.dni.hasError('name') ? 'No es válido: 8 números y 1 letra' :
-    //         '';
-
-    // }  else if (name=='sexo') {
-    //   return this.sexo.hasError('required') ? 'Debe introducir un valor' :
-    //     this.sexo.hasError('name') ? 'No es válido' :
-    //         '';
-
-    // } else if (name=='cumple') {
-    //   return this.cumple.hasError('required') ? 'Debe introducir un valor' :
-    //     this.cumple.hasError('name') ? 'No es válido' :
-    //         '';
-
-    // } else if (name=='color') {
-    //   return this.color.hasError('required') ? 'Debe introducir un valor' :
-    //     this.color.hasError('name') ? 'No es válido' :
-    //         '';
-
-    // } 
+    } 
   }
 
   createNewForm() : void {
