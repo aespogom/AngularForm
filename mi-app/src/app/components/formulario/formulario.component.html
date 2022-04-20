@@ -28,11 +28,13 @@
             </div>
             <div class="col-4">
               <mat-form-field appearance="fill">
-                <mat-label for="cumple">Cumpleaños</mat-label>
-                <input matInput type="date" class="form-control" name="cumple"  required
-                  formControlName="cumple" [min]="minDate" [max]="maxDate">
-                <mat-icon matSuffix>event</mat-icon>
+                <mat-label>Cumpleaños</mat-label>
+                <input matInput [matDatepicker]="picker" class="form-control" name="cumple"  required
+                formControlName="cumple"[min]="minDate" [max]="maxDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
+              
               <mat-form-field appearance="fill">
                 <mat-label for="sexo">Sexo</mat-label>
                 <mat-select  class="form-control" name="sexo"  required
@@ -54,9 +56,9 @@
           </div> 
         </div>
         <div class="row">
-          <button type="submit" class="btn btn-primary" [disabled]="!formulario.valid">
+          <button type="reset" class="btn btn-primary botonAnadir" [disabled]="!formulario.valid" (click)="addPersona()" >
             Añadir
-            <mat-icon matSuffix>person_add</mat-icon>
+            <mat-icon matSuffix inline=true>person_add</mat-icon>
           </button>
           
         </div>

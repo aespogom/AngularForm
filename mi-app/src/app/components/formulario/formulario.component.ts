@@ -46,7 +46,6 @@ export class FormularioComponent implements OnInit {
     this.apellidos= new FormControl('', [Validators.required, Validators.minLength(3)])
     this.color= new FormControl('', [Validators.required, Validators.minLength(3)]) 
     this.sexo= new FormControl('', [Validators.required])
-    // TODO
     this.cumple= new FormControl('', [Validators.required])
     this.formulario = new FormGroup({'name': this.name, 'dni': this.dni, 'apellidos': this.apellidos, 'color': this.color, 'sexo': this.sexo, 'colorFav': this.color, 'cumple': this.cumple});
   
@@ -84,14 +83,8 @@ export class FormularioComponent implements OnInit {
   }
 
   createNewForm() : void {
-    // TODO
     this.formulario.reset();
-    Object.keys(this.formulario.controls).forEach(key => {
-      this.formulario.controls[key].markAsUntouched();
-      this.formulario.controls[key].markAsPristine();
-    });
-    //this.formulario = new FormGroup({'name': this.name, 'dni': this.dni, 'apellidos': this.apellidos, 'color': this.color, 'sexo': this.sexo, 'colorFav': this.color, 'cumple': this.cumple});
-    
+    console.log('reincio')
   }
 
 }

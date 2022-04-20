@@ -27,7 +27,6 @@ export class AgendaComponent implements OnInit {
   }
 
   editPersona(p: Persona): void {
-    // TODO
     console.log(p);
     const modal_edit = this.dialog.open(ModalComponent, {width: '70%', data: p})
     modal_edit.afterClosed().subscribe(res => {
