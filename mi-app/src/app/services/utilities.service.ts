@@ -4,16 +4,15 @@ import { COLORES } from '../constants/colores';
 import { NAMES } from '../constants/names';
 // import * as readline from 'readline';
 // import { stdin as input, stdout as output } from 'node:process';
-// import { Persona } from '../models/persona.model';
 import { TIPOS } from '../constants/tipos';
-import { Persona } from '../models/persona.model';
+import { Socio } from '../models/socio.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilitiesService {
 
-    private _personas: Array<Persona> = [];
+    private _socios: Array<Socio> = [];
   
     constructor() { }
     
@@ -74,36 +73,82 @@ export class UtilitiesService {
         return TIPOS[key][index]
     }
  
-    addPersonas(p: Persona): void {
-        this._personas.push(p);
+    addSocios(s: Socio): void {
+        this._socios.push(s);
     }
 
-    getPersonas(): Array<Persona> {
-        return this._personas;
+    getSocios(): Array<Socio> {
+        return this._socios;
     }
 
-    editPersona(index: number, p: Persona): void {
-        this.removePersonas(index);
-        this.addPersonas(p);
+    editSocio(index: number, s: Socio): void {
+        this.removeSocios(index);
+        this.addSocios(s);
     }
 
-    removePersonas(index_remove: number): void {
-        this._personas.splice(index_remove,1);
+    removeSocios(index_remove: number): void {
+        this._socios.splice(index_remove,1);
     }
 
-    static getRandomPersona(): Persona {
+    foundNumSocio(s: Socio): Boolean {
+        let socios: Array<Socio> = this.getSocios();
+        if (socios.filter(e => e.socio === s.socio).length > 0){
+            return true
+        } else {
+            return false
+        }
+
+    }
+
+    static getRandomSocio(): Socio {
         let sexo = UtilitiesService.getRandomGender();
         let nombre = NAMES[sexo][UtilitiesService.getRandomNumber(95)];
         let apellidos = [];
         for (let i: number = 0; i < 2; i++ ) {
             apellidos[i] = NAMES['apellidos'][UtilitiesService.getRandomNumber(97)];
         }
-        let cumpleaños = UtilitiesService.getRandomFecha();
-        let edad = new Date().getFullYear() - cumpleaños.getFullYear();
+        let num_socio: number = UtilitiesService.getRandomNumber(999999,100000);      
+        let telefono: number = UtilitiesService.getRandomNumber(999999999,6000000);
         let dni = UtilitiesService.getRandomNumber(99999999,10000000).toString() + UtilitiesService.getRandomString(1);
-        let color_favorito = COLORES[UtilitiesService.getRandomNumber(36)];
-        let personaOutput: Persona = new Persona(sexo,nombre,apellidos,cumpleaños,dni,color_favorito);
-        return personaOutput
+        let socioOutput: Socio = new Socio(sexo,nombre,apellidos,dni,num_socio,telefono);
+        return socioOutput
     }
+
+
+
+
+    // static getRandomPersona(): Persona {
+    //     let sexo = UtilitiesService.getRandomGender();
+    //     let nombre = NAMES[sexo][UtilitiesService.getRandomNumber(95)];
+    //     let apellidos = [];
+    //     for (let i: number = 0; i < 2; i++ ) {
+    //         apellidos[i] = NAMES['apellidos'][UtilitiesService.getRandomNumber(97)];
+    //     }
+    //     let cumpleaños = UtilitiesService.getRandomFecha();
+    //     let edad = new Date().getFullYear() - cumpleaños.getFullYear();
+    //     let dni = UtilitiesService.getRandomNumber(99999999,10000000).toString() + UtilitiesService.getRandomString(1);
+    //     let color_favorito = COLORES[UtilitiesService.getRandomNumber(36)];
+    //     let personaOutput: Persona = new Persona(sexo,nombre,apellidos,cumpleaños,dni,color_favorito);
+    //     return personaOutput
+    // }
+
+    // addPersonas(p: Persona): void {
+    //     this._personas.push(p);
+    // }
+
+    // getPersonas(): Array<Persona> {
+    //     return this._personas;
+    // }
+
+    // editPersona(index: number, p: Persona): void {
+    //     this.removePersonas(index);
+    //     this.addPersonas(p);
+    // }
+
+    // removePersonas(index_remove: number): void {
+    //     this._personas.splice(index_remove,1);
+    // }
+
+    
 
 }

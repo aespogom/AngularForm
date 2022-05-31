@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PersonasComponent } from './shared/personas/personas.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { AgendaComponent } from './components/agenda/agenda.component';
@@ -18,7 +17,6 @@ import { MAT_DATE_LOCALE, DateAdapter, MatNativeDateModule } from '@angular/mate
 @NgModule({
   declarations: [
     AppComponent,
-    PersonasComponent,
     FormularioComponent,
     AgendaComponent,
     ModalComponent

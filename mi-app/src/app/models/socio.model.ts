@@ -1,16 +1,15 @@
 // ANA ESPONERA GOMEZ PRACTICA TYPESCRIPT 2022
-export class Persona {
+export class Socio {
     
     nombre: string;
     apellidos: Array<string>;
-    edad: number;
+    socio: number;
     dni: string;
-    cumpleaños: Date;
-    color_favorito: string;
+    telefono: number;
     sexo: string;
 
-    constructor(sexo: string, name: string, apellidos: Array<string>, cumple: Date,
-                dni: string, color: string){
+    constructor(sexo: string, name: string, apellidos: Array<string>,
+                dni: string, socio: number, telefono: number){
 
         this.sexo = sexo;
         this.nombre = name;
@@ -18,10 +17,9 @@ export class Persona {
         for (let i: number = 0; i < apellidos.length; i++ ) {
             this.apellidos[i] = apellidos[i];
         }
-        this.cumpleaños = cumple;
-        this.edad = new Date().getFullYear() - this.cumpleaños.getFullYear();
         this.dni = dni;
-        this.color_favorito = color;
+        this.socio = socio;
+        this.telefono = telefono;
     }
 
     

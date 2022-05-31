@@ -2,7 +2,7 @@
     width: 100%;
 }
 
-.mat-column-position, .mat-column-name, .mat-column-dni, .mat-column-accion {
+.mat-column-socio, .mat-column-name, .mat-column-dni, .mat-column-accion {
     width: 32px;
     border: 1px 0px solid currentColor;
     padding: 24px;

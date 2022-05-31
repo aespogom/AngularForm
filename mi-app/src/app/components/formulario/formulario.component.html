@@ -2,7 +2,7 @@
   <h2 class="text-center mb-5"> Añade un contacto </h2>
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <form [formGroup]="formulario" (ngSubmit)="addPersona()">
+      <form [formGroup]="formulario" (ngSubmit)="addSocio()">
         <div class="form-container">
           <div class="row">
             <div class="col-2"></div>
@@ -28,11 +28,10 @@
             </div>
             <div class="col-4">
               <mat-form-field appearance="fill">
-                <mat-label>Cumpleaños</mat-label>
-                <input matInput [matDatepicker]="picker" class="form-control" name="cumple"  required
-                formControlName="cumple"[min]="minDate" [max]="maxDate">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <mat-label for="telefono">Teléfono</mat-label>
+                <input matInput type="tel" class="form-control" name="telefono"  required
+                formControlName="telefono">
+                <mat-icon matSuffix>phone</mat-icon>
               </mat-form-field>
               
               <mat-form-field appearance="fill">
@@ -46,17 +45,17 @@
                 <mat-icon matSuffix>face</mat-icon>
               </mat-form-field>
               <mat-form-field appearance="fill">
-                <mat-label for="color">Color favorito</mat-label>
-                <input matInput type="text" class="form-control" name="color"  required
-                  formControlName="color">
-                <mat-icon matSuffix>palette</mat-icon>
+                <mat-label for="num_socio">Número Socio</mat-label>
+                <input matInput type="text" class="form-control" name="num_socio"  required
+                  formControlName="num_socio">
+                <mat-icon matSuffix>verified</mat-icon>
               </mat-form-field>
             </div>
             <div class="col-2"></div>
           </div> 
         </div>
         <div class="row">
-          <button type="reset" class="btn btn-primary botonAnadir" [disabled]="!formulario.valid" (click)="addPersona()" >
+          <button type="reset" class="btn btn-primary botonAnadir" [disabled]="!formulario.valid" (click)="addSocio()" >
             Añadir
             <mat-icon matSuffix inline=true>person_add</mat-icon>
           </button>

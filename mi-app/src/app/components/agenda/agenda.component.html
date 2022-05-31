@@ -1,9 +1,9 @@
 <mat-card class="cardContainer">
-  <table mat-table [dataSource]="personas" class="mat-elevation-z8 demo-table">
+  <table mat-table [dataSource]="socios" class="mat-elevation-z8 demo-table">
     <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> Índice </th>
-      <td mat-cell *matCellDef="let element"> {{getIndex(element) + 1}} </td>
+    <ng-container matColumnDef="socio">
+      <th mat-header-cell *matHeaderCellDef> Socio </th>
+      <td mat-cell *matCellDef="let element"> {{element.socio}} </td>
     </ng-container>
 
     <!-- Name Column -->
@@ -21,10 +21,10 @@
     <ng-container matColumnDef="accion">
       <th mat-header-cell *matHeaderCellDef> </th>
         <td mat-cell *matCellDef="let element" fxLayoutGap="5px">
-          <button class="celdaBotones" mat-mini-fab color="primary" (click)="editPersona(element)" matTooltip="Editar contacto" matTooltipPosition="before">
+          <button class="celdaBotones" mat-mini-fab color="primary" (click)="editSocio(element)" matTooltip="Editar contacto" matTooltipPosition="before">
             <mat-icon>edit</mat-icon>
           </button>
-          <button class="celdaBotones" mat-mini-fab color="warn" (click)="removePersona(element)" matTooltip="Eliminar contacto" matTooltipPosition="before">
+          <button class="celdaBotones" mat-mini-fab color="warn" (click)="removeSocio(element)" matTooltip="Eliminar contacto" matTooltipPosition="before">
             <mat-icon>delete</mat-icon>
           </button>
         </td>
@@ -33,8 +33,8 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     
   </table>
-  <mat-toolbar class="emptyTable" *ngIf="personas.length === 0">No hay contactos</mat-toolbar>
-  <div *ngIf="personas.length != 0" class="footer">
+  <mat-toolbar class="emptyTable" *ngIf="socios.length === 0">No hay socios</mat-toolbar>
+  <div *ngIf="socios.length != 0" class="footer">
     <mat-paginator [pageSizeOptions]="[5, 10, 20, 50 ,100]" showFirstLastButtons></mat-paginator>
   </div>
 

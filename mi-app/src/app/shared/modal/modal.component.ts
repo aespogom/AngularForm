@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Persona } from 'src/app/models/persona.model';
+import { Socio } from 'src/app/models/socio.model';
 
 @Component({
   selector: 'app-modal',
@@ -11,7 +11,7 @@ export class ModalComponent implements OnInit {
   
   constructor(
     public dialogRef: MatDialogRef<ModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Persona,
+    @Inject(MAT_DIALOG_DATA) public data: Socio,
   ) { }
 
   ngOnInit(): void {
@@ -21,8 +21,5 @@ export class ModalComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  editPersona(): void {
-    console.log('editar jeje')
-  }
 
 }
